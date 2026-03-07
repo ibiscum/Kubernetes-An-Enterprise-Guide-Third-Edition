@@ -26,5 +26,3 @@ cicd_proxy:
     serviceaccounts:
     - namespace: cicd-ns
       name: default
-    
-  

@@ -28,7 +28,7 @@ data:
   workflows.sh: |
     #!/bin/bash
     ls /var/run/wfsecrets
-    
+
     cat /var/run/secrets/kubernetes.io/serviceaccount/token
     cat /var/run/wfsecrets/wf-token
 
@@ -48,7 +48,7 @@ metadata:
   namespace: cicd-ns
 spec:
   template:
-    metadata:
+    # metadata:
     spec:
       containers:
       - image: docker.io/tremolosecurity/vcluster-onboard
@@ -75,5 +75,3 @@ spec:
               audience: https://cicd-proxy.apps.IPADDR.nip.io/
               expirationSeconds: 6000
               path: wf-token
-
-  

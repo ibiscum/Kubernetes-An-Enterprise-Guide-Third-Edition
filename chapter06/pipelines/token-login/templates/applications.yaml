@@ -48,4 +48,3 @@ spec:
     timeout: {{ .Values.network.session_inactivity_timeout_seconds }}
     scope: -1
     cookiesEnabled: false
-    

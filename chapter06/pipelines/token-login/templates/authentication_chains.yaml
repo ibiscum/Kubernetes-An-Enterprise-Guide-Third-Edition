@@ -17,7 +17,7 @@ spec:
   - name: map
     required: required
     params:
-      map: 
+      map:
       - "uid|composite|${uid}"
       - "mail|composite|${mail}"
       - "givenName|composite|${givenName}"
@@ -26,7 +26,7 @@ spec:
       - "memberOf|user|memberOf"
   - name: jit
     required: required
-    params: 
+    params:
       nameAttr: uid
       workflowName: jitdb
   - name: genoidctoken

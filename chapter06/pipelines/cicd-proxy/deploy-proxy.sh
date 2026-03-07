@@ -53,7 +53,8 @@ EOF
 kubectl create ns cicd-proxy
 
 # create certificates
-export hostip=$(hostname  -I | cut -f1 -d' ' | sed 's/[.]/-/g')
+export hostip
+hostip=$(hostname  -I | cut -f1 -d' ' | sed 's/[.]/-/g')
 
 kubectl create -f - <<EOF
 ---
@@ -108,7 +109,8 @@ spec:
     group: cert-manager.io
 EOF
 
-export CERT=$(kubectl get cm kube-root-ca.crt -n cicd-proxy -o json | jq -r '.data["ca.crt"]' | base64 -w 0)
+export CERT
+CERT=$(kubectl get cm kube-root-ca.crt -n cicd-proxy -o json | jq -r '.data["ca.crt"]' | base64 -w 0)
 
 sed "s/IPADDR/$hostip/g" < ./cicd-proxy_template.yaml | sed "s/CERTPEM/$CERT/g"  > /tmp/cicd-proxy-values.yaml
 

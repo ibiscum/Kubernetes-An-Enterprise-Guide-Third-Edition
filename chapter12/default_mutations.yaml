@@ -40,7 +40,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   location: "spec.initContainers[name:*].securityContext.allowPrivilegeEscalation"
   parameters:
     pathTests:
@@ -66,7 +66,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
     - subPath: "spec.securityContext.fsGroup"
@@ -91,7 +91,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
       - subPath: "spec.containers[name:*].securityContext.runAsNonRoot"
@@ -116,7 +116,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
       - subPath: "spec.initContainers[name:*].securityContext.runAsNonRoot"
@@ -141,7 +141,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
     - subPath: "spec.containers[name:*].securityContext.runAsGroup"
@@ -166,7 +166,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
     - subPath: "spec.initContainers[name:*].securityContext.runAsGroup"
@@ -191,7 +191,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
     - subPath: "spec.containers[name:*].securityContext.runAsUser"
@@ -216,7 +216,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
     - subPath: "spec.initContainers[name:*].securityContext.runAsUser"
@@ -241,7 +241,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   parameters:
     pathTests:
     - subPath: "spec.securityContext.supplementalGroups"
@@ -265,7 +265,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   location: "spec.containers[name:*].securityContext.capabilities.drop"
   parameters:
     assign:
@@ -287,7 +287,7 @@ spec:
     - tigera-operator
     - gitlab
     - docker-registry
-    
+
   location: "spec.initContainers[name:*].securityContext.capabilities.drop"
   parameters:
     assign:
