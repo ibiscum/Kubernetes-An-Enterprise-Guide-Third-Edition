@@ -54,8 +54,8 @@ echo -e "Adding Docker repo"
 echo -e "*******************************************************************************************************************"
 tput setaf 2
 echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && if [ -n "$UBUNTU_CODENAME" ]; then echo "$UBUNTU_CODENAME"; else echo "$VERSION_CODENAME"; fi;)" stable" | \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(source /etc/os-release && if [ -n "$UBUNTU_CODENAME" ]; then echo "$UBUNTU_CODENAME"; else echo "$VERSION_CODENAME"; fi;) stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update -y
 
@@ -79,7 +79,7 @@ echo -e "\n \n******************************************************************
 echo -e "Adding current user to Docker group"
 echo -e "*******************************************************************************************************************"
 tput setaf 2
-sudo usermod -aG docker $USER
+sudo usermod -aG docker "$USER"
 
-exec su -p $USER
+exec su -p "$USER"
 

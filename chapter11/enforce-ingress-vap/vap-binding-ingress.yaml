@@ -5,4 +5,3 @@ metadata:
 spec:
   policyName: "vap-ingress"
   validationActions: [Deny]
-  

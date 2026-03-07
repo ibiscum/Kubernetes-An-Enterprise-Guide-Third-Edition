@@ -9,5 +9,3 @@ spec:
       - group: ""
         version: "v1"
         kind: "Namespace"
-
-      
