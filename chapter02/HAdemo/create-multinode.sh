@@ -103,7 +103,7 @@ frontend workers_https
  mode tcp
  use_backend ingress_https
 backend ingress_https
- option ssl-hello-chk 
+ option ssl-hello-chk
  mode tcp
  server worker $worker1:443 check port 443
  server worker2 $worker2:443 check port 443
@@ -134,17 +134,15 @@ echo -e "Starting HAProxy Docker container"
 echo -e "*******************************************************************************************************************"
 tput setaf 2
 
-echo -e "Worker 1: " $worker1
-echo -e "Worker 2: " $worker2
-echo -e "Worker 3: " $worker3
+echo -e "Worker 1:  $worker1"
+echo -e "Worker 2:  $worker2"
+echo -e "Worker 3:  $worker3"
 tput setaf 2
 
 echo -e "\n\n"
-
 
 # get the kind network so we can run HAProxy on the same Docker network
 KIND_NETWORK=$(docker network ls | grep kind | awk '{print $1}')
 
 # Start the HAProxy Container for the Worker Nodes
 docker run --name HAProxy-workers-lb --network $KIND_NETWORK -d -p 8404:8404 -p 80:80 -p 443:443 -v ~/HAProxy:/usr/local/etc/HAProxy:ro haproxy -f /usr/local/etc/HAProxy/HAProxy.cfg
-

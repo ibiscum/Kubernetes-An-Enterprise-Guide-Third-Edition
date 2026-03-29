@@ -13,7 +13,7 @@ kubectl delete pods -l app=apacheds -n activedirectory
 Once the pod restarts, try again.  If it still doesn't work, look at the logs for OpenUnison in the `openunison` namepace:
 
 ```
-kubectl logs -f -l app=openunison-orchestra -n openunison 
+kubectl logs -f -l app=openunison-orchestra -n openunison
 ```
 
 If you don't see any exceptions, while trying to login, please open an issue.

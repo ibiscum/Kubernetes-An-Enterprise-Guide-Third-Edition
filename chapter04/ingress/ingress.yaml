@@ -4,13 +4,13 @@ metadata:
   name: nginx-ingress
 spec:
   rules:
-  - host: "webserver.$hostip.nip.io"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx-web
-            port:
-              number: 8080
+    - host: "webserver.$hostip.nip.io"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-web
+                port:
+                  number: 8080

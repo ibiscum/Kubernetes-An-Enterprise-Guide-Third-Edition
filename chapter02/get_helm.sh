@@ -17,13 +17,13 @@
 # The install script is based off of the MIT-licensed script from glide,
 # the package manager for Go: https://github.com/Masterminds/glide.sh/blob/master/get
 
-: ${BINARY_NAME:="helm"}
-: ${USE_SUDO:="true"}
-: ${DEBUG:="false"}
-: ${VERIFY_CHECKSUM:="true"}
-: ${VERIFY_SIGNATURES:="false"}
-: ${HELM_INSTALL_DIR:="/usr/local/bin"}
-: ${GPG_PUBRING:="pubring.kbx"}
+: "${BINARY_NAME:="helm"}"
+: "${USE_SUDO:="true"}"
+: "${DEBUG:="false"}"
+: "${VERIFY_CHECKSUM:="true"}"
+: "${VERIFY_SIGNATURES:="false"}"
+: "${HELM_INSTALL_DIR:="/usr/local/bin"}"
+: "${GPG_PUBRING:="pubring.kbx"}"
 
 HAS_CURL="$(type "curl" &> /dev/null && echo true || echo false)"
 HAS_WGET="$(type "wget" &> /dev/null && echo true || echo false)"
@@ -48,7 +48,7 @@ initArch() {
 
 # initOS discovers the operating system for this system.
 initOS() {
-  OS=$(echo `uname`|tr '[:upper:]' '[:lower:]')
+  OS=$(uname|tr '[:upper:]' '[:lower:]')
 
   case "$OS" in
     # Minimalist GNU for Windows

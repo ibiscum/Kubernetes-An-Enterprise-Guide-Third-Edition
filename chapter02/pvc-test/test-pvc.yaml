@@ -2,6 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: test-claim
+  namespace: enterprise-guide
 spec:
   accessModes:
     - ReadWriteOnce
@@ -13,21 +14,33 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: test-pvc-claim
+  namespace: enterprise-guide
 spec:
   containers:
-  - name: test-pod
-    image: busybox
-    command:
-      - "/bin/sh"
-    args:
-      - "-c"
-      - "touch /mnt/test && exit 0 || exit 1"
-    volumeMounts:
-      - name: test-pvc
-        mountPath: "/mnt"
+    - name: test-pod
+      image: chainguard/busybox@sha256:6283e33ce3f382936207a6f64b6e5a64a99d31b7703901238570eeba68de2221
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        readOnlyRootFilesystem: true
+
+      command:
+        - "/bin/sh"
+      args:
+        - "-c"
+        - "touch /mnt/test && exit 0 || exit 1"
+      volumeMounts:
+        - name: test-pvc
+          mountPath: "/mnt"
   restartPolicy: "Never"
   volumes:
     - name: test-pvc
       persistentVolumeClaim:
         claimName: test-claim
-

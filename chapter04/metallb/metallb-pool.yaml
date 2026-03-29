@@ -6,4 +6,3 @@ metadata:
 spec:
   addresses:
   - <metallb_pool>
-
